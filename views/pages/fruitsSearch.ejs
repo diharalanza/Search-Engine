@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Fruit Search</title>
+</head>
+  <body>
+    <%- include('../partials/header'); -%>
+
+    <h1>Fruit Search </h1>
+
+    <input type="search" id="searchBox" placeholder="search for fruits">
+    <input type="button" value="Search" id="searchBtn"><br>
+    
+    <label for="boost">Boost:</label>
+    <input type="checkbox" id="boost" name="boost"><br>
+
+    <label for="limit">Number of results (1-50):</label>
+    <input type="number" id="limit" name="limit" min="1" max="50" value="10">
+
+    <script>
+    document.getElementById("searchBox").value = "<%=data.q%>"
+    document.getElementById("boost").checked = <%=data.boost%>
+    document.getElementById("limit").value = <%=data.limit%>
+    </script>
+
+  
+
+    <div id="searchResults">
+      <p>-------------------------------------------------------------------------------------------</p></p>
+
+    <% for (let result in data.resultsToSend) { %>
+      URL: <a href=<%=data.resultsToSend[result].url%> ><%=data.resultsToSend[result].url%></a>
+      <p>Title: <%=data.resultsToSend[result].title%></p>
+      <p>PageRank: <%=data.resultsToSend[result].pageRankScore%></p>
+      More info: <a href=/fruits/<%=data.resultsToSend[result]._id%> ><%=data.resultsToSend[result]._id%></a>
+      <p>-------------------------------------------------------------------------------------------</p></p>
+
+    <%  }; %>
+    </div>
+
+    <script src="client.js"></script>
+
+    <%- include('../partials/footer'); -%>
+
+  </body>
+</html>

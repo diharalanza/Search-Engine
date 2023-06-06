@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%=data._id%></title>
+
+</head>
+<body>
+	<%- include('../partials/header'); -%>
+
+
+  URL: <a href=<%=data.url%> ><%=data.url%></a>
+
+  <p>TITLE: <%=data.title%></p>
+
+  <p>INCOMING LINKS:</p>
+  <% for (let page in data.incoming) { %>
+    <a href=<%=data.incoming[page]%> ><%=data.incoming[page]%></a> <br>
+    
+<%  }; %>
+
+<p>OUTGOING LINKS:</p>
+  <% for (let page in data.outgoing) { %>
+    <a href=<%=data.outgoing[page]%> ><%=data.outgoing[page]%></a> <br>
+    
+<%  }; %>
+
+<p>WORD FREQUENCY INFO:</p>
+  <% for (let word in data.words) { %>
+    <p><%=word%>: <%=data.words[word]%></p>
+    
+<%  }; %>
+
+
+
+	<%- include('../partials/footer'); -%>
+
+
+</body>
+</html>
